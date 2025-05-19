@@ -14,13 +14,13 @@ on:
   workflow_call: null
 metadata:
   stages/v1alpha1:
-    - name: Prod
+    - name: Prodsupersupersupersuperlongsssssssssssssssssssa
       jobs:
-        - deploy-to-Prod
+        - Prodsupersupersupersuperlongsssssssssssssssssssa
 jobs:
-  deploy-to-Prod:
+  Prodsupersupersupersuperlongsssssssssssssssssssa:
     steps:
-      - name: Deploy to Prod
+      - run: echo "Deploying to Prod"
         uses: docker://golang:1.20.3-alpine3.17
+        name: Prodsupersupersupersuperlongsssssssssssssssssssa
         shell: sh
-        run: echo "Deploying to Prod"
