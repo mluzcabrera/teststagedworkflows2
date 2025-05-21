@@ -9,8 +9,6 @@ on:
   pull_request:
     branches:
       - main
-  schedule:
-    - cron: 0,15,30,45 * * * *
   workflow_call: null
 metadata:
   stages/v1alpha1:
