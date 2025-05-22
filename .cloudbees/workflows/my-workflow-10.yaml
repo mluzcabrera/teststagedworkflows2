@@ -2,23 +2,18 @@ apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
 name: My workflow
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch: null
-  pull_request:
-    branches:
-      - main
-  workflow_call: null
 metadata:
   stages/v1alpha1:
-    - name: Prodsupersupersupersuperlongsssssssssssssssssssa
+    - name: pre-prod
       jobs:
-        - Prodsupersupersupersuperlongsssssssssssssssssssa
+        - entrygate
 jobs:
-  Prodsupersupersupersuperlongsssssssssssssssssssa:
-    steps:
-      - run: echo "Deploying to Prod"
-        uses: docker://golang:1.20.3-alpine3.17
-        name: Prodsupersupersupersuperlongsssssssssssssssssssa
-        shell: sh
+  entrygate:
+    timeout-minutes: 4320
+    with:
+      instructions: ""
+      disallowLaunchByUser: false
+      approvers: 4b7f53fc-d4fe-11ec-bb55-42010a83ae55
+      notifyAllEligibleUsers: false
+    delegates: cloudbees-io/manual-approval/custom-job.yml@v1
