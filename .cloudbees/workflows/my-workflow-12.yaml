@@ -1,0 +1,28 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: My workflow
+on:
+  workflow_dispatch: null
+metadata:
+  stages/v1alpha1:
+    - name: build
+      jobs:
+        - deploy-to-Prod
+    - name: deploy phase
+      jobs:
+        - job
+jobs:
+  deploy-to-Prod:
+    steps:
+      - name: Deploy to Prod
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: echo "Deploying to Prod"
+  job:
+    needs:
+      - deploy-to-Prod
+    steps:
+      - name: Say hello
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: echo "hello world"
