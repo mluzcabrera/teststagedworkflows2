@@ -33,8 +33,6 @@ jobs:
       - uses: b
         name: b
   c:
-    needs:
-      - b
     steps:
       - uses: c
         name: c
