@@ -12,7 +12,7 @@ on:
       - main
   workflow_call:
 jobs:
-  Prodsupersupersupersuperlongsssssssssssssssssssa:
+  Prodsupersupersupersuperlong@@@@sa:
     steps:
       - run: echo "Deploying to Prod"
         uses: docker://golang:1.20.3-alpine3.17
