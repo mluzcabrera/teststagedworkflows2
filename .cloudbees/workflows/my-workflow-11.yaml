@@ -1,11 +1,6 @@
 apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
 name: My workflow
-metadata:
-  stages/v1alpha1:
-    - name: Stage
-      jobs:
-        - Prodsupersupersupersuperlongsssssssssssssssssssa
 
 on:
   push:
