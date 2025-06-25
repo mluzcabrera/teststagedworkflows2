@@ -32,7 +32,7 @@ jobs:
           description: BBB
 
   deploy-to-Prod:
-      needs:
+    needs:
       - approve
     steps:
       - name: Deploy to Prod
