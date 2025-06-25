@@ -10,10 +10,13 @@ metadata:
     - name: Prod
       jobs:
         - approve
+        - build
         - deploy-to-Prod
 
 jobs:
   approve:
+    needs:
+      - build
     timeout-minutes: 4320
     delegates: cloudbees-io/manual-approval/custom-job.yml@v1
     with:
@@ -30,6 +33,13 @@ jobs:
           type: number
           default: 22
           description: BBB
+
+  build:
+    steps:
+      - name: Deploy to Prod
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: echo "Deploying to Prod"
 
   deploy-to-Prod:
     needs:
