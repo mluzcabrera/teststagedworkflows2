@@ -1,15 +1,39 @@
 apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
 name: approval-3
+
 on:
   workflow_dispatch: null
+
 metadata:
   stages/v1alpha1:
     - name: Prod
       jobs:
+        - approve
         - deploy-to-Prod
+
 jobs:
+  approve:
+    timeout-minutes: 4320
+    delegates: cloudbees-io/manual-approval/custom-job.yml@v1
+    with:
+      approvers: 0908d292-df35-11eb-ba33-42010a83ae11
+      disallowLaunchByUser: false
+      instructions: INSTRUCTION
+      approvalInputs: |
+        AAA:
+          type: string
+          default: AAA
+          required: true
+          description: AAA
+        BBB:
+          type: number
+          default: 22
+          description: BBB
+
   deploy-to-Prod:
+      needs:
+      - approve
     steps:
       - name: Deploy to Prod
         uses: docker://golang:1.20.3-alpine3.17
