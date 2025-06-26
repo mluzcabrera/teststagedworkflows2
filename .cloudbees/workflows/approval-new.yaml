@@ -31,6 +31,15 @@ jobs:
           default: www
           required: true
           description: www
+        ttt:
+          type: choice
+          options:
+            - ttt
+            - yyy
+            - uuu
+          default: ""
+          required: true
+          description: ttt
         eee:
           type: number
           default: 333
@@ -41,13 +50,4 @@ jobs:
           default: true
           required: true
           description: rrr
-        ttt:
-          type: choice
-          options:
-            - ttt
-            - yyy
-            - uuu
-          default: ""
-          required: true
-          description: ttt
     delegates: cloudbees-io/manual-approval/custom-job.yml@v1
