@@ -23,7 +23,7 @@ jobs:
     with:
       instructions: qqq
       disallowLaunchByUser: true
-      approvers: 7f4673d0-1f59-11ef-be55-42010a83ae57
+      approvers: ""
       notifyAllEligibleUsers: false
       approvalInputs: |
         www:
