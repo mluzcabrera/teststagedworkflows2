@@ -8,6 +8,7 @@ metadata:
     - name: Prod
       jobs:
         - build
+        - approval-1
 jobs:
   build:
     steps:
@@ -15,3 +16,37 @@ jobs:
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
         run: echo "Deploying to Prod"
+  approval-1:
+    needs:
+      - build
+    timeout-minutes: 4320
+    with:
+      instructions: iii
+      disallowLaunchByUser: true
+      approvers: ""
+      notifyAllEligibleUsers: true
+      approvalInputs: |
+        aaa:
+          type: string
+          default: aaa
+          required: true
+          description: aaa
+        bbb:
+          type: number
+          default: 333
+          required: true
+          description: bbb
+        ccc:
+          type: boolean
+          default: true
+          required: true
+          description: ccc
+        eee:
+          type: choice
+          options:
+            - eee
+            - rrr
+            - tttt
+          required: true
+          description: eee
+    delegates: cloudbees-io/manual-approval/custom-job.yml@v1
