@@ -13,9 +13,8 @@ jobs:
           echo "hello world"
     needs:
       - approve
-
   approve:
     timeout-minutes: 4320
     delegates: cloudbees-io/manual-approval/custom-job.yml@v1
     with:
-      approvers: tryasko@gmail.com,ac107a88-03d2-11eb-9d67-42010a83ae35
+      approvers: tryasko@gmail.com,0908d292-df35-11eb-ba33-42010a83ae11
