@@ -3,7 +3,10 @@ kind: workflow
 name: My workflow
 on:
   workflow_dispatch:
-    
+    inputs:
+      scdcdcdc:
+        type: string
+        required: true
 jobs:
   asxsaxasx:
     steps:
