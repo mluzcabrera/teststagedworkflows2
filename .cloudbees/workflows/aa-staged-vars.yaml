@@ -11,3 +11,4 @@ metadata:
 jobs:
   deploy-to-Prod:
     uses: http://app.cloudbees/workflow.yaml
+    secrets: inherit
