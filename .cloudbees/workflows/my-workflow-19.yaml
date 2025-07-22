@@ -12,7 +12,6 @@ jobs:
         shell: sh
         run: |
           echo "hello world"
-        steps:
       - name: Say hello
         id: id2
         uses: docker://golang:1.20.3-alpine3.17
