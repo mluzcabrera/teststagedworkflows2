@@ -5,6 +5,10 @@ on:
   workflow_dispatch: null
 metadata:
   stages/v1alpha1:
+    - name: Stage1
+      jobs:
+        - job6
+        - job7
     - name: Stage 1
       jobs:
         - job1
@@ -15,10 +19,6 @@ metadata:
         - job
         - job4
         - job5
-    - name: Stage1
-      jobs:
-        - job6
-        - job7
 jobs:
   job1:
     steps:
@@ -26,51 +26,58 @@ jobs:
         uses: docker://golang:1.20.3-alpine3.17
         name: Hello world
         shell: sh
+    needs:
+      - job6
+      - job7
   job2:
-    needs: job1
+    needs: []
     steps:
       - run: echo "hello"
         uses: docker://golang:1.20.3-alpine3.17
         name: Say hello
         shell: sh
   job3:
-    needs: job2
+    needs: []
     steps:
       - run: echo "hello"
         uses: docker://golang:1.20.3-alpine3.17
         name: Say hello
         shell: sh
   job:
-    needs: job3
+    needs:
+      - job3
+      - job6
+      - job7
+      - job1
+      - job2
     steps:
       - name: Say hello
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
         run: echo "hello world"
   job4:
-    needs: job
+    needs: []
     steps:
       - run: echo "hello"
         uses: docker://golang:1.20.3-alpine3.17
         name: Say hello
         shell: sh
   job5:
-    needs: job4
+    needs: []
     steps:
       - run: echo "hello"
         uses: docker://golang:1.20.3-alpine3.17
         name: Say hello
         shell: sh
   job6:
-    needs: job5
+    needs: []
     steps:
       - name: Say hello
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
         run: echo "hello world"
   job7:
-    needs:
-      - job6
+    needs: []
     steps:
       - run: echo "hello"
         uses: docker://golang:1.20.3-alpine3.17
