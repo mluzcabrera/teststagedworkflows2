@@ -21,23 +21,24 @@ metadata:
         - job5
 jobs:
   job1:
+    needs:
+      - job7
     steps:
       - run: echo "hello world"
         uses: docker://golang:1.20.3-alpine3.17
         name: Hello world
         shell: sh
-    needs:
-      - job6
-      - job7
   job2:
-    needs: []
+    needs:
+      - job1
     steps:
       - run: echo "hello"
         uses: docker://golang:1.20.3-alpine3.17
         name: Say hello
         shell: sh
   job3:
-    needs: []
+    needs:
+      - job2
     steps:
       - run: echo "hello"
         uses: docker://golang:1.20.3-alpine3.17
@@ -46,24 +47,22 @@ jobs:
   job:
     needs:
       - job3
-      - job6
-      - job7
-      - job1
-      - job2
     steps:
-      - name: Say hello
+      - run: echo "hello world"
         uses: docker://golang:1.20.3-alpine3.17
+        name: Say hello
         shell: sh
-        run: echo "hello world"
   job4:
-    needs: []
+    needs:
+      - job
     steps:
       - run: echo "hello"
         uses: docker://golang:1.20.3-alpine3.17
         name: Say hello
         shell: sh
   job5:
-    needs: []
+    needs:
+      - job4
     steps:
       - run: echo "hello"
         uses: docker://golang:1.20.3-alpine3.17
