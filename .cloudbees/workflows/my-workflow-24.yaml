@@ -10,11 +10,11 @@ on:
         description: A sample manifest should go here, to help user
 metadata:
   stages/v1alpha1:
-    - name: preprod-us-west-2
+    - name: Stage 1
       jobs:
         - A
         - B
-    - name: preprod-us-east-1
+    - name: Stage 2
       jobs:
         - C
         - D
