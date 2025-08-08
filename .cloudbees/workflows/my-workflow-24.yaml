@@ -45,6 +45,7 @@ jobs:
     needs:
       - C
       - A
+      - B
     timeout-minutes: 4320
     delegates: cloudbees-io/manual-approval/custom-job.yml@v1
     with:
