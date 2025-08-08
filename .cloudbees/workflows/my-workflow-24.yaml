@@ -43,8 +43,6 @@ jobs:
           default: op2
   D:
     needs:
-      - A
-      - B
       - C
     timeout-minutes: 4320
     delegates: cloudbees-io/manual-approval/custom-job.yml@v1
