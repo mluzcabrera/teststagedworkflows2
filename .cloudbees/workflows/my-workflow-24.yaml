@@ -62,7 +62,6 @@ jobs:
           default: op2
   C:
     needs:
-      - A
       - B
     steps:
       - run: echo "Deploying to preprod-us-east-1"
