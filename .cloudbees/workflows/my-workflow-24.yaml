@@ -37,18 +37,17 @@ jobs:
             - op2
           default: op2
     timeout-minutes: 4320
-    delegates: cloudbees-io/manual-approval/custom-job.yml@v1   
-    needs: 
+    delegates: cloudbees-io/manual-approval/custom-job.yml@v1
+    needs:
       - deploy-to-preprod-us-west-2
   deploy-to-preprod-us-east-1:
     needs:
-      - deploy-to-preprod-us-west-2
       - approval-job-west
     steps:
-      - name: Deploy to preprod-us-east-1
+      - run: echo "Deploying to preprod-us-east-1"
         uses: docker://golang:1.20.3-alpine3.17
+        name: Deploy to preprod-us-east-1
         shell: sh
-        run: echo "Deploying to preprod-us-east-1"
   approval-job-east:
     with:
       disallowLaunchByUser: false
@@ -61,8 +60,8 @@ jobs:
             - op2
           default: op2
     timeout-minutes: 4320
-    delegates: cloudbees-io/manual-approval/custom-job.yml@v1   
-    needs: 
+    delegates: cloudbees-io/manual-approval/custom-job.yml@v1
+    needs:
       - deploy-to-preprod-us-east-1
       - deploy-to-preprod-us-west-2
       - approval-job-west
