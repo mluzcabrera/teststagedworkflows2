@@ -47,28 +47,36 @@ jobs:
   a2:
     needs: a1
     steps:
-      - uses: a
-        name: a
+      - run: echo "hello world"
+        uses: docker://golang:1.20.3-alpine3.17
+        name: Hello world
+        shell: sh
   a3:
     needs: a2
     steps:
-      - uses: s
-        name: a3
+      - run: echo "hello world"
+        uses: docker://golang:1.20.3-alpine3.17
+        name: Hello world
+        shell: sh
   b1:
     needs: a3
     steps:
       - run: echo "hello world"
         uses: docker://golang:1.20.3-alpine3.17
-        name: Say hello
+        name: Hello world
         shell: sh
   b2:
     needs: b1
     steps:
-      - uses: b
-        name: b
+      - run: echo "hello world"
+        uses: docker://golang:1.20.3-alpine3.17
+        name: Hello world
+        shell: sh
   b3:
     needs:
       - b2
     steps:
-      - uses: v
-        name: v
+      - run: echo "hello world"
+        uses: docker://golang:1.20.3-alpine3.17
+        name: Hello world
+        shell: sh
