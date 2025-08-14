@@ -5,7 +5,7 @@ on:
   workflow_dispatch: null
 metadata:
   stages/v1alpha1:
-    - name: Stage 1
+    - name: Stage caca
       jobs:
         - job1
         - a
