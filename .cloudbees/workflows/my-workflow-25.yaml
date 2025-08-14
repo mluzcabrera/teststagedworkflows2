@@ -33,12 +33,15 @@ jobs:
       - uses: c
         name: c
   c3:
-    needs: c2
+    needs:
+      - c1
     steps:
       - uses: c
         name: c
   a1:
-    needs: c3
+    needs:
+      - c3
+      - c2
     steps:
       - run: echo "hello world"
         uses: docker://golang:1.20.3-alpine3.17
