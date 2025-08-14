@@ -5,52 +5,70 @@ on:
   workflow_dispatch: null
 metadata:
   stages/v1alpha1:
-    - name: Stage1
+    - name: StageC
       jobs:
-        - job2
-        - c
-    - name: Stage caca
+        - c1
+        - c2
+        - c3
+    - name: StageA
       jobs:
-        - job1
-        - a
+        - a1
+        - a2
+        - a3
     - name: Stage
       jobs:
-        - job
-        - b
+        - b1
+        - b2
+        - b3
 jobs:
-  job1:
+  c1:
+    steps:
+      - run: echo "hello world"
+        uses: docker://golang:1.20.3-alpine3.17
+        name: Say hello
+        shell: sh
+  c2:
+    needs: c1
+    steps:
+      - uses: c
+        name: c
+  c3:
+    needs: c2
+    steps:
+      - uses: c
+        name: c
+  a1:
+    needs: c3
     steps:
       - run: echo "hello world"
         uses: docker://golang:1.20.3-alpine3.17
         name: Hello world
         shell: sh
-    needs: c
-  job:
-    needs: a
-    steps:
-      - name: Say hello
-        uses: docker://golang:1.20.3-alpine3.17
-        shell: sh
-        run: echo "hello world"
-  job2:
-    steps:
-      - name: Say hello
-        uses: docker://golang:1.20.3-alpine3.17
-        shell: sh
-        run: echo "hello world"
-  a:
-    needs: job1
+  a2:
+    needs: a1
     steps:
       - uses: a
         name: a
-  b:
-    needs: job
+  a3:
+    needs: a2
+    steps:
+      - uses: s
+        name: a3
+  b1:
+    needs: a3
+    steps:
+      - run: echo "hello world"
+        uses: docker://golang:1.20.3-alpine3.17
+        name: Say hello
+        shell: sh
+  b2:
+    needs: b1
     steps:
       - uses: b
         name: b
-  c:
+  b3:
     needs:
-      - job2
+      - b2
     steps:
-      - uses: c
-        name: c
+      - uses: v
+        name: v
