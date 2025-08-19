@@ -32,14 +32,14 @@ jobs:
     steps:
       - uses: a
         name: a
-    needs: job1
+    needs: job3
   job3:
     steps:
       - uses: b
         name: b
-    needs: job2
+    needs: job1
   job4:
     steps:
       - uses: c
         name: c
-    needs: job3
+    needs: job2
