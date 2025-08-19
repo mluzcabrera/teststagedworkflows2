@@ -39,7 +39,10 @@ jobs:
         name: b
     needs: job1
   job4:
+    needs:
+      - job2
+      - job1
+      - job3
     steps:
       - uses: c
         name: c
-    needs: job2
