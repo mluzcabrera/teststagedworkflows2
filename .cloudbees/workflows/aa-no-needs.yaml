@@ -1,10 +1,8 @@
 apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
 name: aa-no-needs
-
 on:
   workflow_dispatch: null
-  
 metadata:
   stages/v1alpha1:
     - name: Stage 1
@@ -13,16 +11,17 @@ metadata:
     - name: Stage 2
       jobs:
         - job1
-        
 jobs:
   job1:
+    needs:
+      - job2
     steps:
-      - uses: docker://golang:1.20.3-alpine3.17
-        shell: sh
-        run: |
+      - run: |
           echo "hello world"
           sleep 25
           echo "after sleep"
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
   job2:
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
