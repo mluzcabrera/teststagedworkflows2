@@ -8,6 +8,7 @@ metadata:
     - name: Stage 1
       jobs:
         - job1
+        - job1_1
         - job1_2
         - job1_3
         - job1_4
@@ -16,6 +17,22 @@ metadata:
         - job2
 jobs:
   job1:
+    steps:
+      - run: |
+          echo "hello world"
+          sleep 1
+          echo "after sleep"
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+  job1_0:
+    steps:
+      - run: |
+          echo "hello world"
+          sleep 1
+          echo "after sleep"
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+  job1_1:
     steps:
       - run: |
           echo "hello world"
