@@ -46,6 +46,8 @@ jobs:
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
   job1_3:
+    needs:
+      - job1_2
     steps:
       - run: |
           echo "hello world"
@@ -61,7 +63,6 @@ jobs:
           echo "after sleep"
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
-        
   job2:
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
@@ -71,22 +72,25 @@ jobs:
           sleep 1
           echo "after sleep"
   job2_1:
+    needs:
+      - job1_4
     steps:
-      - uses: docker://golang:1.20.3-alpine3.17
-        shell: sh
-        run: |
+      - run: |
           echo "hello world"
           sleep 1
           echo "after sleep"
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
   job2_2:
+    needs:
+      - job2_1
     steps:
-      - uses: docker://golang:1.20.3-alpine3.17
-        shell: sh
-        run: |
+      - run: |
           echo "hello world"
           sleep 1
           echo "after sleep"
-
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
   job3:
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
