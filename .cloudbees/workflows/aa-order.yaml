@@ -7,31 +7,21 @@ metadata:
   stages/v1alpha1:
     - name: Stage 1
       jobs:
-        - job1
         - job1_1
         - job1_2
         - job1_3
         - job1_4
     - name: Stage 2
       jobs:
-        - job2
-        - job2_0
         - job2_1
+        - job2_2
     - name: Stage 3
       jobs:
-        - job3
-        - job3_0
         - job3_1
+        - job3_2
+        - job3_3
 jobs:
   job1:
-    steps:
-      - run: |
-          echo "hello world"
-          sleep 1
-          echo "after sleep"
-        uses: docker://golang:1.20.3-alpine3.17
-        shell: sh
-  job1_0:
     steps:
       - run: |
           echo "hello world"
@@ -80,7 +70,7 @@ jobs:
           echo "hello world"
           sleep 1
           echo "after sleep"
-  job2_0:
+  job2_1:
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
         shell: sh
@@ -88,7 +78,7 @@ jobs:
           echo "hello world"
           sleep 1
           echo "after sleep"
-  job2_1:
+  job2_2:
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
         shell: sh
@@ -105,7 +95,7 @@ jobs:
           echo "hello world"
           sleep 1
           echo "after sleep"
-  job3_0:
+  job3_1:
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
         shell: sh
@@ -113,7 +103,15 @@ jobs:
           echo "hello world"
           sleep 1
           echo "after sleep"
-  job3_1:
+  job3_2:
+    steps:
+      - uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo "hello world"
+          sleep 1
+          echo "after sleep"
+  job3_3:
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
         shell: sh
