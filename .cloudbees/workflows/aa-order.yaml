@@ -15,6 +15,13 @@ metadata:
     - name: Stage 2
       jobs:
         - job2
+        - job2_0
+        - job2_1
+    - name: Stage 3
+      jobs:
+        - job3
+        - job3_0
+        - job3_1
 jobs:
   job1:
     steps:
