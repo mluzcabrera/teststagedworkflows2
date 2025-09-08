@@ -73,3 +73,44 @@ jobs:
           echo "hello world"
           sleep 1
           echo "after sleep"
+  job2_0:
+    steps:
+      - uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo "hello world"
+          sleep 1
+          echo "after sleep"
+  job2_1:
+    steps:
+      - uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo "hello world"
+          sleep 1
+          echo "after sleep"
+
+  job3:
+    steps:
+      - uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo "hello world"
+          sleep 1
+          echo "after sleep"
+  job3_0:
+    steps:
+      - uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo "hello world"
+          sleep 1
+          echo "after sleep"
+  job3_1:
+    steps:
+      - uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo "hello world"
+          sleep 1
+          echo "after sleep"
