@@ -7,12 +7,12 @@ metadata:
   stages/v1alpha1:
     - name: Stage 1
       jobs:
-        - job1_1
-        - job1_2
+        - job1_5
+        - job1_4
         - erfref
         - job1_3
-        - job1_4
-        - job1_5
+        - job1_2
+        - job1_1
     - name: Stage 2
       jobs:
         - job2_1
