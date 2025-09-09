@@ -21,8 +21,12 @@ jobs:
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
   job3:
+    needs:
+      - job2
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
   job4:
+    needs:
+      - job3
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
