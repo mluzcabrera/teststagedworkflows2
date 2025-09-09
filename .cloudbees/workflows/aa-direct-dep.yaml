@@ -11,22 +11,26 @@ metadata:
         - job2
         - job3
         - job4
+        - aaa
 jobs:
   job1:
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
   job2:
-    needs:
-      - job1
+    needs: job1
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
   job3:
     needs:
-      - job2
+      - aaa
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
   job4:
-    needs:
-      - job3
+    needs: job3
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
+  aaa:
+    needs:
+      - job2
+    steps:
+      - uses: wdwedf
