@@ -9,10 +9,10 @@ metadata:
       jobs:
         - job1_1
         - job1_2
+        - erfref
         - job1_3
         - job1_4
         - job1_5
-        - erfref
     - name: Stage 2
       jobs:
         - job2_1
