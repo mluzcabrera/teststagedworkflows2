@@ -7,11 +7,11 @@ metadata:
   stages/v1alpha1:
     - name: Stage 1
       jobs:
+        - aaa
+        - job3
         - job1
         - job2
-        - job3
         - job4
-        - aaa
 jobs:
   job1:
     steps:
