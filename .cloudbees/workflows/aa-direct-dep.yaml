@@ -16,21 +16,26 @@ jobs:
   job1:
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
+        run: echo "hello world"
   job2:
     needs: job1
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
+        run: echo "hello world"
   job3:
     needs:
       - aaa
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
+        run: echo "hello world"
   job4:
     needs: job3
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
+        run: echo "hello world"
   aaa:
     needs:
       - job2
     steps:
-      - uses: wdwedf
+      - uses: docker://golang:1.20.3-alpine3.17
+        run: echo "hello world"
