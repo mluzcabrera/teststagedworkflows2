@@ -1,17 +1,29 @@
 apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
 name: aa-direct-dep
+
 on:
   workflow_dispatch: null
+  
 metadata:
   stages/v1alpha1:
     - name: Stage 1
       jobs:
         - job1
+        - job2
+        - job3
+        - job4
+        
 jobs:
   job1:
     steps:
-      - run: echo "hello world"
-        uses: docker://golang:1.20.3-alpine3.17
-        name: Hello world
-        shell: sh
+      - uses: docker://golang:1.20.3-alpine3.17
+  job2:
+    steps:
+      - uses: docker://golang:1.20.3-alpine3.17
+  job3:
+    steps:
+      - uses: docker://golang:1.20.3-alpine3.17
+  job4:
+    steps:
+      - uses: docker://golang:1.20.3-alpine3.17
