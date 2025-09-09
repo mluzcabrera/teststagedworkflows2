@@ -1,10 +1,8 @@
 apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
 name: aa-direct-dep
-
 on:
   workflow_dispatch: null
-  
 metadata:
   stages/v1alpha1:
     - name: Stage 1
@@ -13,12 +11,13 @@ metadata:
         - job2
         - job3
         - job4
-        
 jobs:
   job1:
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
   job2:
+    needs:
+      - job1
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
   job3:
