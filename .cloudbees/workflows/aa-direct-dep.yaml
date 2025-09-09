@@ -7,24 +7,23 @@ metadata:
   stages/v1alpha1:
     - name: Stage 1
       jobs:
-        - aaa
         - job3
         - job1
         - job2
         - job4
+        - aaa
 jobs:
   job1:
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
         run: echo "hello world"
   job2:
-    needs: job1
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
         run: echo "hello world"
+    needs: job1
   job3:
-    needs:
-      - aaa
+    needs: job2
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
         run: echo "hello world"
@@ -34,8 +33,7 @@ jobs:
       - uses: docker://golang:1.20.3-alpine3.17
         run: echo "hello world"
   aaa:
-    needs:
-      - job2
+    needs: job4
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
         run: echo "hello world"
