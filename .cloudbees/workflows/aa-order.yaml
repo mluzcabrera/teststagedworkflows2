@@ -68,8 +68,8 @@ jobs:
         shell: sh
   job1_5:
     needs:
-      - job1_2
       - job1_3
+      - job1_4
     steps:
       - run: |
           echo "hello world"
