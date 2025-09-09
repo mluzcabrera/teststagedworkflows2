@@ -5,6 +5,8 @@ on:
   workflow_dispatch: null
 metadata:
   stages/v1alpha1:
+    - name: Stage 0
+      jobs: []
     - name: Stage 1
       jobs:
         - job1_1
