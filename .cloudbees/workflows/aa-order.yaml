@@ -22,6 +22,7 @@ metadata:
         - job3_1
         - job3_2
         - job3_3
+    - name: Stage 4
 jobs:
   job1:
     steps:
