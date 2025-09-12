@@ -1,0 +1,141 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: aa-no-needs
+on:
+  workflow_dispatch: null
+metadata:
+  stages/v1alpha1:
+    - name: Stage 1
+      jobs:
+        - job1_5
+        - job1_4
+        - erfref
+        - job1_3
+        - job1_2
+        - job1_1
+    - name: Stage 2
+      jobs:
+        - job2_1
+        - job2_2
+    - name: Stage 3
+      jobs:
+        - job3_1
+        - job3_2
+        - job3_3
+jobs:
+  job1:
+    steps:
+      - run: |
+          echo "hello world"
+          sleep 1
+          echo "after sleep"
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+  job1_1:
+    steps:
+      - run: |
+          echo "hello world"
+          sleep 1
+          echo "after sleep"
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+  job1_2:
+    steps:
+      - run: |
+          echo "hello world"
+          sleep 1
+          echo "after sleep"
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+  job1_3:
+    needs: job1_2
+    steps:
+      - run: |
+          echo "hello world"
+          sleep 1
+          echo "after sleep"
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+  job1_4:
+    needs: job1_2
+    steps:
+      - run: |
+          echo "hello world"
+          sleep 1
+          echo "after sleep"
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+  job1_5:
+    needs:
+      - job1_3
+      - job1_4
+    steps:
+      - run: |
+          echo "hello world"
+          sleep 1
+          echo "after sleep"
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+  job2:
+    steps:
+      - uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo "hello world"
+          sleep 1
+          echo "after sleep"
+  job2_1:
+    needs:
+      - erfref
+      - job1_4
+    steps:
+      - run: |
+          echo "hello world"
+          sleep 1
+          echo "after sleep"
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+  job2_2:
+    needs: job2_1
+    steps:
+      - run: |
+          echo "hello world"
+          sleep 1
+          echo "after sleep"
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+  job3:
+    steps:
+      - uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo "hello world"
+          sleep 1
+          echo "after sleep"
+  job3_1:
+    steps:
+      - uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo "hello world"
+          sleep 1
+          echo "after sleep"
+  job3_2:
+    steps:
+      - uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo "hello world"
+          sleep 1
+          echo "after sleep"
+  job3_3:
+    steps:
+      - uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo "hello world"
+          sleep 1
+          echo "after sleep"
+  erfref:
+    steps:
+      - uses: rfe
