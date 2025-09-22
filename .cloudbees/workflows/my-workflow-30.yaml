@@ -13,14 +13,14 @@ metadata:
         - job
 jobs:
   job1:
+    needs:
+      - job
     steps:
       - run: echo "hello world"
         uses: docker://golang:1.20.3-alpine3.17
         name: Hello world
         shell: sh
   job:
-    needs:
-      - job1
     steps:
       - name: Say hello
         uses: docker://golang:1.20.3-alpine3.17
