@@ -62,6 +62,7 @@ jobs:
   C:
     needs:
       - B
+      - A
     steps:
       - run: echo "Deploying to preprod-us-east-1"
         uses: docker://golang:1.20.3-alpine3.17
