@@ -5,23 +5,13 @@ on:
   workflow_dispatch: null
 metadata:
   stages/v1alpha1:
-    - name: Stage 1
+    - name: stage 1
       jobs:
-        - job1
-    - name: Stage1
+        - test
+    - name: stage 2
       jobs:
-        - job2
+        - test
 jobs:
-  job1:
+  build:
     steps:
-      - run: echo "hello world"
-        uses: docker://golang:1.20.3-alpine3.17
-        name: Hello world
-        shell: sh
-  job2:
-    needs: job1
-    steps:
-      - name: Say hello
-        uses: docker://golang:1.20.3-alpine3.17
-        shell: sh
-        run: echo "hello world"
+      - uses: test
