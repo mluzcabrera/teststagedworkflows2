@@ -2,9 +2,12 @@ apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
 name: aaa-aaa
 on:
-  push:
-    branches:
-      - "**"
+  workflow_dispatch: null
+metadata:
+  stages/v1alpha1:
+    - name: Prod
+      jobs:
+        - build
 jobs:
   build:
     steps:
