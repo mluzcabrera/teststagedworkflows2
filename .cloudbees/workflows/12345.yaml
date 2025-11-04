@@ -4,7 +4,7 @@ name: My workflow
 on:
   workflow_dispatch:
 jobs:
-  build:
+  job-12345:
     steps:
       - name: Say hello
         uses: docker://golang:1.20.3-alpine3.17
