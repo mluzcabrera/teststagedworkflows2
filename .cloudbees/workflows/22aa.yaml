@@ -3,6 +3,9 @@ kind: workflow
 name: My workflow
 on:
   workflow_dispatch:
+    inputs:
+      hola:
+        type: string
 jobs:
   build:
     steps:
