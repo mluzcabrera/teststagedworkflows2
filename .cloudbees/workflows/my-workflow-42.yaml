@@ -16,10 +16,10 @@ jobs:
         uses: docker://golang:1.20.3-alpine3.17
         name: Hello world
         shell: sh
+    needs: job1
   job2:
     steps:
       - run: echo "hello"
         uses: docker://golang:1.20.3-alpine3.17
         name: Say hello
         shell: sh
-    needs: job1
