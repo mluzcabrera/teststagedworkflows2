@@ -16,7 +16,7 @@ jobs:
         uses: docker://golang:1.20.3-alpine3.17
         name: Hello world
         shell: sh
-    needs: job1
+    needs: job2
   job2:
     steps:
       - run: echo "hello"
